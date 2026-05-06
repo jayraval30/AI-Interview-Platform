@@ -1,0 +1,106 @@
+package com.interviewai.interview_platform.websocket;
+
+import com.interviewai.interview_platform.dto.AnswerMessage;
+import com.interviewai.interview_platform.dto.FeedbackResponse;
+import com.interviewai.interview_platform.model.InterviewSession;
+import com.interviewai.interview_platform.model.Question;
+import com.interviewai.interview_platform.repository.SessionRepository;
+import com.interviewai.interview_platform.repository.QuestionRepository;
+import com.interviewai.interview_platform.service.EvaluationService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.stereotype.Controller;
+import com.interviewai.interview_platform.model.InterviewSession.Status;
+
+@Controller
+@RequiredArgsConstructor
+@Slf4j
+public class InterviewWebSocketController {
+
+    private final EvaluationService evaluationService;
+    private final SessionRepository sessionRepository;
+    private final QuestionRepository questionRepository;
+    private final SimpMessagingTemplate messagingTemplate;
+
+    @MessageMapping("/answer")
+    public void handleAnswer(AnswerMessage answerMessage) {
+
+        log.info("Received answer for question ID: {}",
+                answerMessage.getQuestionId());
+
+        // 1. Find the question
+        Question question = questionRepository
+                .findById(answerMessage.getQuestionId())
+                .orElse(null);
+
+        if (question == null) {
+            log.error("Question not found: {}", answerMessage.getQuestionId());
+            return;
+        }
+
+        // 2. Find the session
+        InterviewSession session = sessionRepository
+                .findById(answerMessage.getSessionId())
+                .orElse(null);
+
+        if (session == null) {
+            log.error("Session not found: {}", answerMessage.getSessionId());
+            return;
+        }
+
+        // 3. Evaluate answer using Groq AI
+        EvaluationService.EvaluationResult result = evaluationService.evaluate(
+                answerMessage.getQuestionText(),
+                answerMessage.getUserAnswer()
+        );
+
+        // 4. Save answer and score to question
+        question.setUserAnswer(answerMessage.getUserAnswer());
+        question.setAiFeedback(result.feedback());
+        question.setScore(result.score());
+        questionRepository.save(question);
+
+        // 5. Update session total score
+        int totalScore = session.getQuestions()
+                .stream()
+                .mapToInt(q -> q.getScore() != null ? q.getScore() : 0)
+                .sum();
+
+        session.setTotalScore(totalScore);
+
+        // 6. Count how many questions answered
+        long answeredCount = session.getQuestions()
+                .stream()
+                .filter(q -> q.getUserAnswer() != null)
+                .count();
+
+        // 7. Check if session is completed
+        boolean sessionCompleted = answeredCount >= session.getTotalQuestions();
+
+        if (sessionCompleted) {
+            session.setStatus(Status.COMPLETED);
+        }
+
+        sessionRepository.save(session);
+
+        // 8. Build feedback response
+        FeedbackResponse response = new FeedbackResponse(
+                question.getId(),
+                result.score(),
+                result.feedback(),
+                sessionCompleted,
+                totalScore,
+                (int) answeredCount
+        );
+
+        // 9. Send feedback back to frontend
+        messagingTemplate.convertAndSend(
+                "/topic/feedback/" + answerMessage.getSessionId(),
+                response
+        );
+
+        log.info("Feedback sent for session: {}", answerMessage.getSessionId());
+    }
+}
