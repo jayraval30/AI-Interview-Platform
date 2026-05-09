@@ -82,21 +82,6 @@ cd Frontend/interview-frontend
 npm install
 npm run dev
 ```
-
----
-
-## Environment Variables
-
-Create your local configuration file and add:
-
-```env
-DB_URL=your_database_url
-DB_USERNAME=your_database_username
-DB_PASSWORD=your_database_password
-JWT_SECRET=your_jwt_secret
-GROQ_API_KEY=your_groq_api_key
-```
-
 ---
 
 ## Future Improvements
