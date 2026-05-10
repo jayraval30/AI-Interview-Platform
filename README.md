@@ -1,4 +1,4 @@
-# 🚀 AI Interview Preparation Platform
+#  AI Interview Preparation Platform
 
 A full-stack AI-powered interview preparation platform built with **Spring Boot**, **React**, **WebSockets**, and **Groq AI**.
 
@@ -14,9 +14,9 @@ Designed with a modern dark UI inspired by **Stripe** and **Vercel**.
 
 ---
 
-# ✨ Features
+#  Features
 
-## 👨‍💼 Candidate Features
+##  Candidate Features
 
 * JWT authentication
 * AI chatbot interview experience
@@ -30,7 +30,7 @@ Designed with a modern dark UI inspired by **Stripe** and **Vercel**.
 
 ---
 
-## 🧑‍💻 Recruiter Features
+##  Recruiter Features
 
 * Candidate management
 * Launch interviews remotely
@@ -42,7 +42,7 @@ Designed with a modern dark UI inspired by **Stripe** and **Vercel**.
 
 ---
 
-## 🤖 AI Features
+##  AI Features
 
 * AI answer evaluation using Groq LLM
 * Automatic scoring
@@ -51,7 +51,7 @@ Designed with a modern dark UI inspired by **Stripe** and **Vercel**.
 
 ---
 
-# 🛠️ Tech Stack
+#  Tech Stack
 
 ## Backend
 
@@ -80,7 +80,7 @@ Designed with a modern dark UI inspired by **Stripe** and **Vercel**.
 
 ---
 
-# 📁 Project Structure
+#  Project Structure
 
 ## Backend Structure
 
@@ -116,9 +116,9 @@ src/
 
 ---
 
-# 🧩 Core Features
+# Core Features
 
-## 🔐 Authentication
+## Authentication
 
 * Secure JWT login/register
 * BCrypt password hashing
@@ -127,7 +127,7 @@ src/
 
 ---
 
-## ⚡ Real-Time WebSockets
+## Real-Time WebSockets
 
 * Live typing monitoring
 * Recruiter live dashboard
@@ -146,7 +146,7 @@ src/
 
 ---
 
-# 🎙️ Voice Features
+#  Voice Features
 
 ## Bot Text-to-Speech
 
@@ -176,7 +176,7 @@ Features:
 
 ---
 
-# 🧠 AI Evaluation Flow
+#  AI Evaluation Flow
 
 1. Candidate submits answer
 2. Backend sends answer to Groq API
@@ -193,7 +193,7 @@ Features:
 
 ---
 
-# 🎨 UI Design
+#  UI Design
 
 ## Design Style
 
@@ -212,7 +212,7 @@ Features:
 
 ---
 
-# 🗄️ Database
+#  Database
 
 ## PostgreSQL (Supabase)
 
@@ -226,7 +226,7 @@ Features:
 
 ---
 
-# 🔧 Backend Features
+#  Backend Features
 
 ## Implemented
 
@@ -241,7 +241,7 @@ Features:
 
 ---
 
-# 📡 REST API Highlights
+#  REST API Highlights
 
 ## Auth APIs
 
@@ -271,7 +271,7 @@ GET /api/users/all
 
 ---
 
-# 🚀 Getting Started
+#  Getting Started
 
 ## Clone Repository
 
@@ -333,7 +333,7 @@ http://localhost:5173
 
 ---
 
-# ⚠️ Important Notes
+#  Important Notes
 
 ## PostgreSQL Reserved Keyword Fix
 
@@ -409,7 +409,7 @@ spring.datasource.hikari.keepalive-time=60000
 
 ---
 
-# 👨‍💻 Author
+#  Author
 
 Built by Het Jani
 
@@ -422,9 +422,9 @@ Computer Engineering Student passionate about:
 
 ---
 
-# ⭐ Project Status
+#  Project Status
 
-✅ Fully Working MVP
+ Fully Working MVP
 
 Features completed:
 
@@ -437,8 +437,3 @@ Features completed:
 * Session Tracking
 * Results Dashboard
 
----
-
-# 📜 License
-
-This project is for educational and portfolio purposes.
