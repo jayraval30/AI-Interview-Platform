@@ -4,17 +4,7 @@ A full-stack AI-powered mock interview platform built using Spring Boot, React, 
 
 ---
 
-## Features
-
-* JWT Authentication & Authorization
-* AI-Based Mock Interviews
-* Real-time Communication
-* Role-Based Interview Questions
-* Responsive User Interface
-* Secure Backend APIs
-* PostgreSQL Database Integration
-* WebSocket Support
-
+##
 ---
 
 ## Tech Stack
