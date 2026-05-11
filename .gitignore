@@ -1,4 +1,3 @@
-```gitignore id="8k15j7"
 # IntelliJ
 .idea/
 
@@ -11,13 +10,15 @@ Frontend/node_modules/
 # Environment variables
 .env
 
+# Spring secrets
+src/main/resources/application.properties
+
+# Nested repo
+interview-platform/
+
 # Logs
 *.log
 
 # OS files
 .DS_Store
 Thumbs.db
-
-src/main/resources/application.properties
-.env
-```
