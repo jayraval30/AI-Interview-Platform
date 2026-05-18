@@ -67,8 +67,8 @@ input, textarea {
   transition: all 0.2s ease;
 }
 
-/* Grid texture overlay */
-body::before {
+/* Grid texture overlay — skipped on login page */
+body:not(.lp-active)::before {
   content: '';
   position: fixed;
   inset: 0;
@@ -102,11 +102,11 @@ body::before {
   letter-spacing: 0.05em;
 }
 
-.badge-blue { background: #2563EB20; color: #60A5FA; border: 1px solid #2563EB40; }
-.badge-green { background: #10B98120; color: #34D399; border: 1px solid #10B98140; }
+.badge-blue   { background: #2563EB20; color: #60A5FA; border: 1px solid #2563EB40; }
+.badge-green  { background: #10B98120; color: #34D399; border: 1px solid #10B98140; }
 .badge-orange { background: #F9731620; color: #FB923C; border: 1px solid #F9731640; }
-.badge-red { background: #EF444420; color: #F87171; border: 1px solid #EF444440; }
-.badge-cyan { background: #06B6D420; color: #22D3EE; border: 1px solid #06B6D440; }
+.badge-red    { background: #EF444420; color: #F87171; border: 1px solid #EF444440; }
+.badge-cyan   { background: #06B6D420; color: #22D3EE; border: 1px solid #06B6D440; }
 
 /* Card */
 .card {
@@ -188,25 +188,25 @@ body::before {
 /* Animations */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes fadeIn {
   from { opacity: 0; }
-  to { opacity: 1; }
+  to   { opacity: 1; }
 }
 @keyframes pulse-glow {
   0%, 100% { box-shadow: 0 0 10px #2563EB30; }
-  50% { box-shadow: 0 0 30px #2563EB60; }
+  50%       { box-shadow: 0 0 30px #2563EB60; }
 }
 @keyframes blink {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  50%       { opacity: 0; }
 }
 @keyframes spin {
   from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  to   { transform: rotate(360deg); }
 }
 
-.animate-fade-up { animation: fadeUp 0.5s ease forwards; }
-.animate-fade-in { animation: fadeIn 0.4s ease forwards; }
+.animate-fade-up    { animation: fadeUp 0.5s ease forwards; }
+.animate-fade-in    { animation: fadeIn 0.4s ease forwards; }
 .animate-pulse-glow { animation: pulse-glow 2s ease infinite; }
