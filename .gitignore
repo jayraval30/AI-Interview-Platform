@@ -1,24 +1,4 @@
-# IntelliJ
-.idea/
-
-# Maven
-target/
-
-# Node
-Frontend/node_modules/
-
-# Environment variables
-.env
-
-# Spring secrets
-src/main/resources/application.properties
-
-# Nested repo
-interview-platform/
-
-# Logs
-*.log
-
-# OS files
-.DS_Store
-Thumbs.db
+application.properties 
+.env 
+target/ 
+node_modules/ 
